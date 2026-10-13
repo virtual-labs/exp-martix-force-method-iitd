@@ -18,10 +18,11 @@ Using classical methods (e.g., virtual work, unit load method, or matrix methods
 #### Step 5: Formulate Flexibility Matrix
 The flexibility matrix <strong>F<sup>m</sup></strong> relates the unknown redundant forces to the displacements at the points of release. For a structure with D redundants, the flexibility matrix is a D×D
 
-image
+<div style="text-align: center;"><img src="images/flexibility-matrix-1.png" alt="Flexibility matrix" class="img-fluid" style="width: 500px; height: auto; margin-left: 200px;"></div>
 
 Each element F<sup>m</sup><sub>ij</sub> in the matrix represents the displacement at location i due to a unit load applied at location j in the primary determinate structure and m is the member number. The flexibility matrix is symmetric for linear elastic materials.
-image
+
+<img src="images/flexibility-matrix-2.png" alt="Flexibility matrix" align="center" class="img-fluid" style="width: 200px; height: auto;">
 
 Where: • <strong> &Delta; <sub>ij</sub></strong> is the displacement at point ij,
 
