@@ -1,0 +1,508 @@
+html {
+  user-select: none;
+}
+
+body {
+  margin-top: 40px;
+  font-family: Verdana, Arial, sans-serif;
+  background: #ffffff;
+  color: #101010;
+}
+
+#simscreen {
+  position: relative;
+  height: 600px;
+  width: 800px;
+  border: solid 1px #111;
+  background-color: #dbd8d8;
+  overflow: hidden;
+}
+
+#title {
+  position: relative;
+  left: 0;
+  top: 0;
+  height: 40px;
+  text-align: center;
+  background-color: #9e9e9e;
+  color: #000;
+  text-transform: uppercase;
+}
+
+#title h3 {
+  padding-top: 8px;
+  font-size: 20px;
+  margin: 0;
+}
+
+.simsubscreen {
+  position: absolute;
+  left: 0;
+  top: 40px;
+  height: 560px;
+  width: 800px;
+  background-color: #ececec;
+  visibility: visible;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.instruction-card {
+  position: absolute;
+  left: 35px;
+  top: 30px;
+  width: 710px;
+  min-height: 82px;
+  border: 2px solid #0084ff;
+  background-color: rgba(255, 255, 255, 0.82);
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.intro-card {
+  min-height: 94px;
+}
+
+#introBeam {
+  position: absolute;
+  left: 210px;
+  top: 205px;
+  width: 390px;
+  height: auto;
+  border: 1px solid #bbb;
+  background: #fff;
+  padding: 20px;
+}
+
+.dark-btn {
+  position: absolute;
+  cursor: pointer;
+  font-size: 15px;
+  background-color: #3b3c3b;
+  border: 0;
+  border-radius: 12px;
+  padding: 8px 15px;
+  color: #fff;
+}
+
+#startBtn {
+  left: 600px;
+  top: 500px;
+}
+
+.arrow-start {
+  position: absolute;
+  left: 560px;
+  top: 492px;
+  font-size: 34px;
+}
+
+.top-instruction {
+  position: absolute;
+  left: 23px;
+  top: 26px;
+  width: 735px;
+  height: 41px;
+  border: 2px solid #1b1c1d;
+  font-size: 14px;
+  padding: 10px 12px 0 12px;
+  background-color: rgba(255, 255, 255, 0.68);
+}
+
+.arrow-inline {
+  position: absolute;
+  right: 105px;
+  top: 2px;
+  font-size: 31px;
+}
+
+.blue-btn {
+  cursor: pointer;
+  font-size: 15px;
+  padding: 7px 15px;
+  background-color: #2150a0;
+  color: #fff;
+  border: 1px solid #173b79;
+  border-radius: 6px;
+  box-shadow: 0 2px 0 #102a59, 0 4px 9px rgba(33, 80, 160, 0.25);
+  animation: buttonPulse 1.35s ease-in-out infinite;
+}
+
+#bringBtn {
+  position: absolute;
+  right: 16px;
+  top: 4px;
+}
+
+.figure-guide {
+  position: absolute;
+  left: 34px;
+  top: 92px;
+  width: 700px;
+  border-left: 4px solid #2150a0;
+  background: #ffffff;
+  padding: 8px 13px;
+  font-size: 13px;
+  line-height: 1.25;
+}
+
+.figure-guide p {
+  margin: 3px 0;
+}
+
+.figure-caption {
+  position: absolute;
+  margin: 0;
+  color: #101010;
+  font-size: 12px;
+  line-height: 1.25;
+}
+
+#loadedCaption {
+  left: 45px;
+  top: 235px;
+  width: 276px;
+}
+
+#releasedCaption {
+  left: 405px;
+  top: 270px;
+  width: 301px;
+}
+
+#flexCaption {
+  left: 145px;
+  top: 530px;
+  width: 330px;
+}
+
+.specimen {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #b9b9b9;
+  padding: 8px;
+}
+
+#loadedSpecimen {
+  left: 620px;
+  top: 180px;
+  width: 260px;
+}
+
+#releasedSpecimen {
+  left: 620px;
+  top: 330px;
+  width: 285px;
+}
+
+#flexSpecimen {
+  left: 620px;
+  top: 80px;
+  width: 330px;
+}
+
+@keyframes loadedMove {
+  from { left: 620px; top: 180px; }
+  to { left: 45px; top: 115px; }
+}
+
+@keyframes releasedMove {
+  from { left: 620px; top: 330px; }
+  to { left: 405px; top: 140px; }
+}
+
+@keyframes flexMove {
+  from { left: 620px; top: 80px; }
+  to { left: 145px; top: 330px; }
+}
+
+.move-loaded {
+  animation: loadedMove 1.5s forwards;
+}
+
+.move-released {
+  animation: releasedMove 1.7s forwards;
+}
+
+.move-flex {
+  animation: flexMove 1.9s forwards;
+}
+
+.next-hand {
+  position: absolute;
+  left: 700px;
+  top: 492px;
+  height: 58px;
+  width: 64px;
+  border: 2px solid #173b79;
+  border-radius: 50%;
+  background: #2150a0;
+  color: #fff;
+  cursor: pointer;
+  font-size: 40px;
+  line-height: 45px;
+  box-shadow: 0 3px 0 #102a59, 0 7px 15px rgba(33, 80, 160, 0.32);
+  animation: handBlink 1.15s ease-in-out infinite;
+}
+
+.stage-panel {
+  position: absolute;
+  border: 2px solid #666;
+  background-image: linear-gradient(rgb(214, 232, 245), rgb(249, 213, 213));
+  border-radius: 18px;
+  padding: 15px;
+  font-size: 14px;
+}
+
+.left-panel {
+  left: 25px;
+  top: 28px;
+  width: 350px;
+  height: 470px;
+}
+
+.right-panel {
+  left: 435px;
+  top: 28px;
+  width: 310px;
+  min-height: 410px;
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(205, 230, 248));
+  border-radius: 0;
+  border-color: #f36f21;
+}
+
+.final-panel {
+  left: 95px;
+  top: 80px;
+  width: 580px;
+  min-height: 360px;
+  text-align: center;
+}
+
+h4 {
+  margin: 0 0 14px 0;
+  font-size: 17px;
+  text-decoration: underline;
+}
+
+.beam-img {
+  display: block;
+  width: 300px;
+  margin: 45px auto 30px;
+  background: #fff;
+  border: 1px solid #bbb;
+  padding: 18px;
+}
+
+.flex-img {
+  display: block;
+  width: 330px;
+  margin: 55px auto 20px;
+  background: #fff;
+  border: 1px solid #bbb;
+}
+
+.condition {
+  color: rgb(10, 10, 133);
+  line-height: 1.5;
+}
+
+.input-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 12px;
+  margin-bottom: 14px;
+}
+
+label {
+  display: block;
+  margin: 9px 0;
+  font-weight: bold;
+}
+
+input {
+  width: 120px;
+  height: 30px;
+  text-align: center;
+  border: 1px solid #000;
+  background: #fff;
+  margin-left: 8px;
+}
+
+.input-grid input {
+  width: 95px;
+  margin-left: 0;
+  margin-top: 5px;
+  display: block;
+}
+
+.wide-btn {
+  width: 140px;
+  margin-top: 8px;
+}
+
+.calc-btn {
+  margin-top: 8px;
+  width: 105px;
+}
+
+.calc-btn:focus,
+.blue-btn:focus,
+.dark-btn:focus {
+  outline: 3px solid #f36f21;
+  outline-offset: 2px;
+}
+
+.output {
+  display: block;
+  min-height: 31px;
+  margin-top: 16px;
+  border: 1px solid #000;
+  padding: 7px 8px;
+  background-color: #4c4b4b;
+  color: #fff;
+  line-height: 1.35;
+}
+
+.right-panel .output {
+  max-height: 165px;
+  overflow-y: auto;
+  font-size: 12px;
+}
+
+.output:empty {
+  display: none;
+}
+
+.warning {
+  background-color: #772525;
+}
+
+.formula {
+  color: rgb(10, 10, 133);
+  font-weight: bold;
+  line-height: 1.55;
+}
+
+.matrix-equation {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+}
+
+.matrix {
+  display: grid;
+  position: relative;
+  gap: 3px 8px;
+  padding: 5px 11px;
+  text-align: center;
+  line-height: 1.15;
+}
+
+.matrix::before,
+.matrix::after {
+  position: absolute;
+  top: 1px;
+  bottom: 1px;
+  width: 6px;
+  content: "";
+}
+
+.matrix::before {
+  left: 0;
+  border-left: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.matrix::after {
+  right: 0;
+  border-right: 2px solid currentColor;
+  border-top: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+}
+
+.matrix-1 {
+  grid-template-columns: max-content;
+}
+
+.matrix-3 {
+  grid-template-columns: repeat(3, max-content);
+}
+
+.matrix-4 {
+  grid-template-columns: repeat(4, max-content);
+}
+
+.compact-matrix {
+  font-size: 12px;
+  gap: 5px;
+}
+
+.compact-matrix .matrix {
+  gap: 2px 6px;
+  padding: 4px 9px;
+}
+
+#beamCanvas {
+  width: 340px;
+  height: 180px;
+  background: #fff;
+  border: 1px solid #aaa;
+  margin-top: 25px;
+}
+
+.final-values {
+  margin: 24px auto;
+  width: fit-content;
+}
+
+.final-vector {
+  font-size: 16px;
+  text-align: left;
+}
+
+#restartBtn {
+  position: static;
+}
+
+.dark-btn {
+  animation: buttonPulse 1.35s ease-in-out infinite;
+}
+
+@keyframes handBlink {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    opacity: 0.62;
+    transform: scale(1.08) rotate(-4deg);
+  }
+}
+
+@keyframes buttonPulse {
+  0%, 100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 0.72;
+    transform: translateY(-2px);
+  }
+}
+
+.blink_me {
+  animation: blinker 1s linear infinite;
+  color: #2150a0;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}

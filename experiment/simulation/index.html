@@ -1,13 +1,198 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<!-- Add CSS at the head of HTML file -->
-    <link rel="stylesheet" href="./css/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Matrix Force Method Simulation</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-		<!-- Your code goes here-->
+  <table align="center">
+    <tr>
+      <td>
+        <div id="simscreen">
+          <div id="title"><h3><strong>Matrix Force Method</strong></h3></div>
 
-	<!-- Add JS at the bottom of HTML file --> 
-        <script src="./js/main.js"></script>
+          <div class="simsubscreen" id="canvas0">
+            <div class="instruction-card intro-card">
+              <p><strong>Simulation:</strong> Matrix Force Method for the two span beam.</p>
+              <p>Complete each step in order. A new step appears only after the current input is correct.</p>
+            </div>
+            <img src="assets/loaded-beam.png" id="introBeam" alt="Loaded beam">
+            <span class="blink_me arrow-start">➜</span>
+            <button id="startBtn" class="dark-btn" type="button">Start Experiment</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas1">
+            <div class="top-instruction">
+              <span><strong>Step 1:</strong> Click on <u>Bring</u> to display the experiment diagrams.</span>
+              <span class="blink_me arrow-inline">➜</span>
+              <button id="bringBtn" class="blue-btn" type="button">Bring</button>
+            </div>
+            <div id="figureGuide" class="figure-guide">
+              <p><strong>Loaded beam:</strong> the original two-span beam carrying P1 and P2.</p>
+              <p><strong>Released beam:</strong> releases show the independent internal force actions.</p>
+              <p><strong>Flexibility matrix:</strong> relates released-force actions to member displacements.</p>
+            </div>
+            <img src="assets/loaded-beam.png" id="loadedSpecimen" class="specimen hidden" alt="Loaded beam">
+            <img src="assets/released-beam.png" id="releasedSpecimen" class="specimen hidden" alt="Released beam">
+            <img src="assets/flexibility-matrix.png" id="flexSpecimen" class="specimen hidden" alt="Member flexibility matrix">
+            <p id="loadedCaption" class="figure-caption hidden"><strong>Loaded beam:</strong> shows the original two-span structure and applied loads.</p>
+            <p id="releasedCaption" class="figure-caption hidden"><strong>Released beam:</strong> shows the independent force actions used for analysis.</p>
+            <p id="flexCaption" class="figure-caption hidden"><strong>Flexibility matrix:</strong> connects force actions with displacements.</p>
+            <button id="toInputBtn" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas2">
+            <div class="stage-panel left-panel">
+              <h4>Given Structure</h4>
+              <img src="assets/loaded-beam.png" class="beam-img" alt="Loaded beam">
+              <p class="condition"><strong>Condition:</strong> Beam with two equal spans L, loads P1 and P2, and end moment P3.</p>
+            </div>
+            <div class="stage-panel right-panel">
+              <h4>Step 2: Enter Input Values</h4>
+              <div class="input-grid">
+                <label>L <input id="L" type="number" step="0.01" value="2"></label>
+                <label>E <input id="E" type="number" step="0.01" value="200000"></label>
+                <label>I <input id="I" type="number" step="0.01" value="50000000"></label>
+                <label>P1 <input id="P1" type="number" step="0.01" value="1"></label>
+                <label>P2 <input id="P2" type="number" step="0.01" value="1"></label>
+                <label>P3 <input id="P3" type="number" step="0.01" value="1"></label>
+              </div>
+              <button id="saveInputBtn" class="blue-btn wide-btn" type="button">Submit Values</button>
+              <output id="inputOutput" class="output warning"></output>
+            </div>
+            <button id="next2" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas3">
+            <div class="stage-panel left-panel">
+              <h4>Step 3: Identify Vectors</h4>
+              <div class="matrix-equation">
+                <span>{P} =</span>
+                <span class="matrix matrix-1" aria-label="P vector with P1, P2, P3"><span>P1</span><span>P2</span><span>P3</span></span>
+              </div>
+              <div class="matrix-equation">
+                <span>{u} =</span>
+                <span class="matrix matrix-1" aria-label="u vector with u1, u2, u3"><span>u1</span><span>u2</span><span>u3</span></span>
+              </div>
+              <p>{f} = [b]{P}</p>
+            </div>
+            <div class="stage-panel right-panel">
+              <p><strong>Enter the order of force transformation matrix [b]</strong></p>
+              <label>Rows of [b] <input id="bRows" type="number" step="0.01"></label>
+              <label>Columns of [b] <input id="bCols" type="number" step="0.01"></label>
+              <button class="blue-btn calc-btn" data-check="bOrder" type="button">Calculate</button>
+              <output id="out-bOrder" class="output"></output>
+            </div>
+            <button id="next3" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas4">
+            <div class="stage-panel left-panel">
+              <h4>Step 4: Member Flexibility</h4>
+              <img src="assets/flexibility-matrix.png" class="flex-img" alt="Member flexibility matrix">
+            </div>
+            <div class="stage-panel right-panel">
+              <p><strong>For the beam element, enter the outside multiplier of [F].</strong></p>
+              <div class="matrix-equation compact-matrix">
+                <span>[F] = k</span>
+                <span class="matrix matrix-4" aria-label="Four by four member flexibility matrix"><span>2</span><span>-1</span><span>0</span><span>0</span><span>-1</span><span>2</span><span>0</span><span>-1</span><span>0</span><span>0</span><span>2</span><span>-1</span><span>0</span><span>-1</span><span>-1</span><span>2</span></span>
+              </div>
+              <label>k = <input id="kValue" type="number" step="0.01"></label>
+              <button class="blue-btn calc-btn" data-check="kValue" type="button">Calculate</button>
+              <output id="out-kValue" class="output"></output>
+            </div>
+            <button id="next4" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas5">
+            <div class="stage-panel left-panel">
+              <h4>Step 5: Transformation Matrix</h4>
+              <p>[b] is obtained from the force transformation relation.</p>
+              <div class="matrix-equation formula">
+                <span>[b] =</span>
+                <span class="matrix matrix-3" aria-label="Four by three force transformation matrix"><span>L</span><span>2L</span><span>1</span><span>-L</span><span>0</span><span>-1</span><span>0</span><span>L</span><span>1</span><span>0</span><span>0</span><span>1</span></span>
+              </div>
+            </div>
+            <div class="stage-panel right-panel">
+              <p><strong>Enter selected values of [b].</strong></p>
+              <label>b11 <input id="b11" type="number" step="0.01"></label>
+              <label>b12 <input id="b12" type="number" step="0.01"></label>
+              <label>b22 <input id="b22" type="number" step="0.01"></label>
+              <label>b33 <input id="b33" type="number" step="0.01"></label>
+              <button class="blue-btn calc-btn" data-check="bTerms" type="button">Calculate</button>
+              <output id="out-bTerms" class="output"></output>
+            </div>
+            <button id="next5" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas6">
+            <div class="stage-panel left-panel">
+              <h4>Step 6: Total Structural Flexibility</h4>
+              <p>[F]<sub>TS</sub> = [b]<sup>T</sup>[F]<sub>c</sub>[b]</p>
+              <div class="matrix-equation formula">
+                <span>[F]<sub>TS</sub> = L/(6EI)</span>
+                <span class="matrix matrix-3" aria-label="Three by three total structural flexibility matrix"><span>2L²</span><span>5L²</span><span>3L</span><span>5L²</span><span>16L²</span><span>12L</span><span>3L</span><span>12L</span><span>12</span></span>
+              </div>
+            </div>
+            <div class="stage-panel right-panel">
+              <p><strong>Enter selected terms of [F]<sub>TS</sub>.</strong></p>
+              <label>F11 <input id="f11" type="number" step="0.01"></label>
+              <label>F12 <input id="f12" type="number" step="0.01"></label>
+              <label>F23 <input id="f23" type="number" step="0.01"></label>
+              <label>F33 <input id="f33" type="number" step="0.01"></label>
+              <button class="blue-btn calc-btn" data-check="ftsTerms" type="button">Calculate</button>
+              <output id="out-ftsTerms" class="output"></output>
+            </div>
+            <button id="next6" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas7">
+            <div class="stage-panel left-panel">
+              <h4>Step 7: External Displacement Vector</h4>
+              <p>{u} = [F]<sub>TS</sub>{P}</p>
+              <p>Use the first row of the matrix to calculate u1.</p>
+            </div>
+            <div class="stage-panel right-panel">
+              <p><strong>Enter u1.</strong></p>
+              <p class="formula">u1 = (2L³P1 + 5L³P2 + 3L²P3)/(6EI)</p>
+              <label>u1 <input id="u1" type="number" step="0.01"></label>
+              <button class="blue-btn calc-btn" data-check="u1" type="button">Calculate</button>
+              <output id="out-u1" class="output"></output>
+            </div>
+            <button id="next7" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas8">
+            <div class="stage-panel left-panel">
+              <h4>Step 8: Complete Displacement Vector</h4>
+              <p>Now calculate u2 and u3 from the remaining rows.</p>
+              <canvas id="beamCanvas" width="360" height="190"></canvas>
+            </div>
+            <div class="stage-panel right-panel">
+              <label>u2 <input id="u2" type="number" step="0.01"></label>
+              <label>u3 <input id="u3" type="number" step="0.01"></label>
+              <button class="blue-btn calc-btn" data-check="u23" type="button">Calculate</button>
+              <output id="out-u23" class="output"></output>
+            </div>
+            <button id="next8" class="next-hand hidden" type="button">☞</button>
+          </div>
+
+          <div class="simsubscreen hidden" id="canvas9">
+            <div class="stage-panel final-panel">
+              <h4>Simulation Completed</h4>
+              <p>The displacement vector has been obtained using:</p>
+              <p class="formula">{u} = [F]<sub>TS</sub>{P}</p>
+              <div id="finalValues" class="final-values"></div>
+              <button id="restartBtn" class="dark-btn" type="button">Restart</button>
+            </div>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </table>
+
+  <script src="script.js"></script>
 </body>
 </html>

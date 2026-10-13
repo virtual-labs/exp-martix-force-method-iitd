@@ -2,35 +2,56 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "1. What is the Matrix Stiffness Method primarily used for?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Determining redundant forces",
+        "b": "Determining displacements and rotations in a structure",
+        "c": "Calculating strain energy",
+        "d": "Calculating moments and shear forces"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "2. In the Matrix Stiffness Method, what is the primary unknown?",
+      "answers": {
+        "a": "Forces",
+        "b": "Displacements",
+        "c": "Moments",
+        "d": "Strains"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "3. Which of the following is the correct relationship in the Matrix Stiffness Method?",
+      "answers": {
+        "a": "{F}=[K]{δ}",
+        "b": "{δ}=[K]{F}",
+        "c": "[K]=[F]{δ}",
+        "d": "[K]={δ}[F]"
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "4. What does the stiffness matrix [K] represent in the Matrix Stiffness Method?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Flexibility of the structure",
+        "b": "Resistance to deformation",
+        "c": "Applied forces on the structure",
+        "d": "Displacements due to external loads"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "5. The stiffness matrix is typically:",
+      "answers": {
+        "a": "Skew-symmetric",
+        "b": "Singular",
+        "c": "Symmetric",
+        "d": "Identity matrix"
       },
       "correctAnswer": "c",
       "difficulty": "beginner"
