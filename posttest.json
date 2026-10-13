@@ -1,0 +1,49 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "In the stiffness matrix formulation for a beam element, the term EI/L3 represents",
+      "answers": {
+        "a": "Axial stiffness",
+        "b": "Torsional stiffness",
+        "c": "Flexural stiffness",
+        "d": "Shear stiffness"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following methods is typically used to assemble the global stiffness matrix in the stiffness method?",
+      "answers": {
+        "a": "Superposition principle",
+        "b": "Gauss-Seidel method",
+        "c": "Element connectivity",
+        "d": "Lagrange’s method"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What is the primary purpose of boundary conditions in the Matrix Stiffness Method?",
+      "answers": {
+        "a": "To calculate internal moments",
+        "b": "To reduce the size of the stiffness matrix",
+        "c": "To apply external loads",
+        "d": "To constrain displacements and rotations at specific nodes"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following represents the correct sequence of steps in the Matrix Stiffness Method?",
+      "answers": {
+        "a": "Define geometry, form global stiffness matrix, apply boundary conditions, solve for displacements",
+        "b": "Apply boundary conditions, form global stiffness matrix, define geometry, solve for displacements",
+        "c": "Form local stiffness matrices, define loads, solve for displacements, apply boundary conditions",
+        "d": "Solve for forces, form local stiffness matrices, define loads, apply boundary conditions"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    }
+  ]
+}
