@@ -38,9 +38,8 @@ Where: • <strong> &Delta; <sub>ij</sub></strong> is the displacement at point 
 This is the mathematical relationship between external forces <strong>{P}</strong> and the internal forces <strong>{F}</strong> where external forces are the main governing forces.
 
 ##### Step 8: Formation of total structural flexibility matrix
-<strong>[F]<sub>TS</sub> = [b]<sub>T</sub> [F]<sub>c</sub> [b]</strong>
 
-image
+<div style="text-align: center;"><img src="images/flexibility-matrix-3.png" alt="Flexibility matrix" class="img-fluid" style="width: 500px; height: auto; margin-left: 300px;"></div>
 
 #### Step 9: Obtain the external displacement vector
 <strong>{u} = [F]TS {p}</strong>
